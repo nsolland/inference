@@ -1,0 +1,71 @@
+{
+  "protocol": "EXUP-EVAL-01",
+  "protocol_version": "0.1.0",
+  "purpose": "Verify a before/after inference-performance claim without disclosing the private transformation that produced the candidate artifact.",
+  "disclosure_boundary": {
+    "publish": [
+      "protocol_version",
+      "benchmark_upstream_commit",
+      "runner_hash",
+      "workload",
+      "dataset_identity",
+      "dataset_hash",
+      "baseline_artifact_hash",
+      "candidate_artifact_hash",
+      "hardware",
+      "software",
+      "scenario",
+      "acceptance_rule",
+      "resource_envelope",
+      "raw_measurement_hashes",
+      "result_receipt"
+    ],
+    "never_required": [
+      "EXUP source code",
+      "optimizer state",
+      "search trajectory",
+      "intermediate candidates",
+      "private transformation logs",
+      "private transformation parameters"
+    ]
+  },
+  "invariants": [
+    "same workload",
+    "same dataset",
+    "same acceptance rule",
+    "same hardware",
+    "same benchmark runner",
+    "same scenario",
+    "same resource envelope",
+    "candidate must satisfy acceptance rule before performance comparison"
+  ],
+  "measurement": {
+    "benchmark_family": "MLPerf Inference",
+    "benchmark_upstream_commit": "3fbc329939999c13d0a7b5e67fb2092287e06047",
+    "mode": "offline-capable",
+    "comparison": "baseline_vs_candidate",
+    "fail_closed": true
+  },
+  "required_receipt_fields": [
+    "protocol",
+    "protocol_version",
+    "timestamp_utc",
+    "benchmark_upstream_commit",
+    "runner_sha256",
+    "workload",
+    "dataset_sha256",
+    "baseline_artifact_sha256",
+    "candidate_artifact_sha256",
+    "hardware_fingerprint",
+    "software_fingerprint",
+    "scenario",
+    "acceptance_rule",
+    "resource_envelope",
+    "baseline_accuracy",
+    "candidate_accuracy",
+    "baseline_performance",
+    "candidate_performance",
+    "raw_results_sha256",
+    "verdict"
+  ]
+}
